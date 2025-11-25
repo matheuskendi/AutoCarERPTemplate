@@ -18,7 +18,7 @@ import {
     SidebarContent,
     SidebarFooter,
     SidebarHeader,
-    SidebarRail,
+    SidebarRail, SidebarTrigger,
 } from "@/components/ui/sidebar"
 
 // Dados ajustados para o sistema de OS
@@ -93,9 +93,11 @@ const data = {
 
 export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
     return (
+
         <Sidebar collapsible="icon" {...props}>
             <SidebarHeader>
                 <TeamSwitcher teams={data.teams} />
+                <SidebarTrigger className="-ml-1" />
             </SidebarHeader>
             <SidebarContent>
                 <NavMain items={data.navMain} />
