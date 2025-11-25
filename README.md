@@ -22,11 +22,10 @@ npm install
 Rodar em modo desenvolvimento
 npm run dev
 
-text
 
 O projeto ficará disponível em algo como:
 
-- `http://localhost:5173` (porta padrão do Vite; confira a porta mostrada no terminal). [web:170][web:174]
+- `http://localhost:5173` (porta padrão do Vite; confira a porta mostrada no terminal). 
 
 ## 📌 Funcionalidades atuais (front-end)
 
@@ -46,7 +45,7 @@ O projeto ficará disponível em algo como:
 - Tela de Configurações:
   - Dados de perfil (nome, email)
   - Preferências (tema, idioma, notificações)
-  - Alteração de senha (preparada para integração com API) [web:165][web:156]
+  - Alteração de senha (preparada para integração com API) 
 
 ## 🗺️ Rotas principais (front)
 
@@ -63,7 +62,7 @@ O projeto ficará disponível em algo como:
 - `/ordem-servico/nova` – abertura de O.S.
 - `/configuracoes` – página de configurações do usuário/sistema
 
-Essas rotas são gerenciadas pelo `App.tsx` usando um `MainLayout` com `<Outlet />` para manter a sidebar fixa. [web:140][web:145]
+Essas rotas são gerenciadas pelo `App.tsx` usando um `MainLayout` com `<Outlet />` para manter a sidebar fixa.
 
 ## 🔗 Integração com backend C#
 
@@ -79,7 +78,7 @@ As páginas de listagem e formulários estão preparadas para consumir uma API R
 - `POST /api/ordensservico`
 - `POST /api/usuarios/trocar-senha`
 
-Basta substituir os dados mockados nos `useEffect` e handlers de formulário por chamadas `fetch`/`axios` apontando para esses endpoints. [web:119][web:116]
+Basta substituir os dados mockados nos `useEffect` e handlers de formulário por chamadas `fetch`/`axios` apontando para esses endpoints. 
 
 ## 📂 Estrutura (resumida)
 
@@ -122,9 +121,8 @@ CriarOrdemServico.tsx
 App.tsx
 main.tsx
 
-text
 
-Essa estrutura segue boas práticas de organização de projetos React com rotas e layout compartilhado. [web:94][web:92]
+Essa estrutura segue boas práticas de organização de projetos React com rotas e layout compartilhado. 
 
 ## 🧪 Scripts úteis (ajuste conforme seu package.json)
 
@@ -137,14 +135,3 @@ Essa estrutura segue boas práticas de organização de projetos React com rotas
 }
 }
 
-text
-
-Confira e ajuste de acordo com o `package.json` real do projeto. [web:170]
-
-## 📄 Licença
-
-Defina aqui a licença do projeto, por exemplo:
-
-- MIT
-- Apache-2.0
-- Uso pessoal / estudo
