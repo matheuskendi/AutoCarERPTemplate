@@ -1,73 +1,150 @@
-# React + TypeScript + Vite
+# AutoCar ERP Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema web para gestão de oficina (ERP Automotivo), com front-end em React + TypeScript utilizando shadcn/ui e integração planejada com backend em C# (.NET). [web:208][web:215]
 
-Currently, two official plugins are available:
+## 🧰 Tecnologias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React + TypeScript
+- Vite (ou Create React App, conforme o setup)
+- shadcn/ui + Tailwind CSS
+- React Router DOM
+- Backend C# (.NET Web API) – integração via HTTP/JSON [web:162][web:214]
 
-## React Compiler
+## 🚀 Como rodar o projeto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Clonar o repositório
+git clone https://github.com/matheuskendi/AutoCarERPTemplate.git
+cd AutoCarERPTemplate
 
-## Expanding the ESLint configuration
+Instalar dependências
+npm install
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Rodar em modo desenvolvimento
+npm run dev
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+text
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+O projeto ficará disponível em algo como:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `http://localhost:5173` (porta padrão do Vite; confira a porta mostrada no terminal). [web:170][web:174]
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📌 Funcionalidades atuais (front-end)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Login
+- Layout com sidebar fixa e navegação sem recarregar página (React Router + MainLayout)
+- Dashboard / Home com cards de resumo
+- Cadastros:
+  - Clientes
+  - Veículos
+  - Produtos / Serviços
+  - Ordens de Serviço
+- Listagem de:
+  - Clientes
+  - Veículos
+  - Produtos / Serviços
+  - Ordens de Serviço
+- Tela de Configurações:
+  - Dados de perfil (nome, email)
+  - Preferências (tema, idioma, notificações)
+  - Alteração de senha (preparada para integração com API) [web:165][web:156]
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🗺️ Rotas principais (front)
+
+- `/login` – tela de login (sem sidebar)
+- `/` – Home / Dashboard (com sidebar)
+- `/dash` – dashboard alternativo (se aplicado)
+- `/clientes` – listagem de clientes
+- `/clientes/novo` – cadastro de cliente
+- `/veiculos` – listagem de veículos
+- `/veiculos/novo` – cadastro de veículo
+- `/produtos` – listagem de produtos/serviços
+- `/produtos/novo` – cadastro de produto/serviço
+- `/ordem-servico` – listagem de O.S.
+- `/ordem-servico/nova` – abertura de O.S.
+- `/configuracoes` – página de configurações do usuário/sistema
+
+Essas rotas são gerenciadas pelo `App.tsx` usando um `MainLayout` com `<Outlet />` para manter a sidebar fixa. [web:140][web:145]
+
+## 🔗 Integração com backend C#
+
+As páginas de listagem e formulários estão preparadas para consumir uma API REST em C#, por exemplo:
+
+- `GET /api/clientes`
+- `POST /api/clientes`
+- `GET /api/veiculos`
+- `POST /api/veiculos`
+- `GET /api/produtos`
+- `POST /api/produtos`
+- `GET /api/ordensservico`
+- `POST /api/ordensservico`
+- `POST /api/usuarios/trocar-senha`
+
+Basta substituir os dados mockados nos `useEffect` e handlers de formulário por chamadas `fetch`/`axios` apontando para esses endpoints. [web:119][web:116]
+
+## 📂 Estrutura (resumida)
+
+src/
+components/
+app-sidebar.tsx
+nav-main.tsx
+nav-projects.tsx
+nav-user.tsx
+team-switcher.tsx
+ui/
+breadcrumb.tsx
+sidebar.tsx
+table.tsx
+button.tsx
+input.tsx
+card.tsx
+select.tsx
+switch.tsx
+...
+layouts/
+MainLayout.tsx
+pages/
+Home.tsx
+Login.tsx
+Dashboard.tsx
+Configuracoes.tsx
+clientes/
+ClientesList.tsx
+CriarClientes.tsx
+veiculos/
+VeiculosList.tsx
+CriarVeiculo.tsx
+produtos/
+ProdutosList.tsx
+CriarProduto.tsx
+os/
+OsList.tsx
+CriarOrdemServico.tsx
+App.tsx
+main.tsx
+
+text
+
+Essa estrutura segue boas práticas de organização de projetos React com rotas e layout compartilhado. [web:94][web:92]
+
+## 🧪 Scripts úteis (ajuste conforme seu package.json)
+
+{
+"scripts": {
+"dev": "vite", // rodar em desenvolvimento
+"build": "vite build", // gerar build de produção
+"preview": "vite preview", // servir build para testes locais
+"lint": "eslint ."
+}
+}
+
+text
+
+Confira e ajuste de acordo com o `package.json` real do projeto. [web:170]
+
+## 📄 Licença
+
+Defina aqui a licença do projeto, por exemplo:
+
+- MIT
+- Apache-2.0
+- Uso pessoal / estudo
