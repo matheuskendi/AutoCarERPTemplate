@@ -25,7 +25,7 @@ export default function App() {
 
                 {/* Rotas que usam o layout com sidebar */}
                 <Route element={<MainLayout />}>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Dashboard />} />
                     <Route path="/dash" element={<Dashboard />} />
 
                     {/* Clientes */}

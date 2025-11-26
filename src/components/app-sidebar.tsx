@@ -41,7 +41,7 @@ const data = {
             url: "/",
             icon: LayoutDashboard,
             items: [
-                { title: "Dashboard", url: "/dashboard" },
+                { title: "Dashboard", url: "/dash" },
             ],
         },
         {
